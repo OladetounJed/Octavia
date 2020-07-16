@@ -1,6 +1,6 @@
 This is a Vue Progressive Web App Built 
 
-On Currency Converter API using Firebase Aunthntication
+On Currency Converter API using Firebase Aunthentication
 
 that allows Users create Account and Log in to convert Dollar to Naira
 

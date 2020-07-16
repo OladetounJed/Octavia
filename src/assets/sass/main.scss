@@ -375,8 +375,14 @@ body {
     }
   }
   .about {
+    &__header {
+      font-size: 2em;
+    }
     &__con {
       flex-direction: column;
+      &-2 {
+        flex-direction: column-reverse;
+      }
     }
     &__child {
       width: 100%;
@@ -542,7 +548,7 @@ body {
 /* -------
   
   
-  Dashboard Styles
+  Dashboard Desktop Styles
   
   -------*/
 
@@ -580,11 +586,11 @@ body {
 
   &__dollar {
     color: $primary-yellow;
-      font-size: 1.8em;
-      position: absolute;
-      font-family: $primary-font;
+    font-size: 1.8em;
+    position: absolute;
+    font-family: $primary-font;
     font-weight: 100;
-      left: 1em;
+    left: 1em;
   }
 
   &__currency-result {
@@ -618,26 +624,25 @@ body {
   
   -------*/
 
-  @media (max-width: 700px) {
-      .dashboard {
-          &__note {
-            font-size: 1.3em;
-          }
-          &__currency-input {
-              width: 80%;
-              display: block;
-              margin: 1em auto;
-              font-size: 1.3em;
-          }
-          &__currency-note {
-              font-size: 1em;
-          }
-          &__dollar {
-              font-size: 1.3em;
-          }
-          &__currency-result {
-              font-size: 1.4em;
-          }
-      }
-
+@media (max-width: 700px) {
+  .dashboard {
+    &__note {
+      font-size: 1.3em;
+    }
+    &__currency-input {
+      width: 80%;
+      display: block;
+      margin: 1em auto;
+      font-size: 1.3em;
+    }
+    &__currency-note {
+      font-size: 1em;
+    }
+    &__dollar {
+      font-size: 1.3em;
+    }
+    &__currency-result {
+      font-size: 1.4em;
+    }
   }
+}
