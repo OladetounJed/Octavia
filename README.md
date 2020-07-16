@@ -1,19 +1,15 @@
-# octavia
+This is a Vue Progressive Web App Built 
 
-## Project setup
-```
-npm install
-```
+On Currency Converter API using Firebase Aunthntication
 
-### Compiles and hot-reloads for development
-```
+that allows Users create Account and Log in to convert Dollar to Naira
+
+
+
+NPM SCRIPTS
+
 npm run serve
-```
 
-### Compiles and minifies for production
-```
 npm run build
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+

@@ -1,0 +1,643 @@
+/* --------
+
+
+Variables
+
+--------*/
+
+//Fonts
+$primary-font: "Open Sans";
+$secondary-font: "Epilogue";
+
+//Colors
+$primary-black: #000;
+$primary-white: #ffff;
+$primary-smokewhite: #fafafa;
+$primary-yellow: #d0c930;
+$primary-grey: #716767;
+
+$secondary-black: #212121;
+$secondary-grey: #707070;
+
+/*------
+
+
+Animation
+
+
+---------*/
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-1em);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(-10deg);
+  }
+
+  50% {
+    transform: rotate(5deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes expand {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes slightShake {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  80% {
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinNegative {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@mixin landingStyle {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+//Reset CSS
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Epilogue";
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.landing,
+.about {
+  &__know-us {
+    width: 13em;
+    height: 4em;
+    border: none;
+    background-color: transparent;
+    color: $primary-smokewhite;
+    display: block;
+    margin: 2em auto;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+
+    &:before {
+      transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      content: "";
+      border-radius: 0.2em;
+      width: 20%;
+      height: 100%;
+      background: $primary-yellow;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    &:hover {
+      &:before {
+        width: 100%;
+      }
+      &:active {
+        transform: translateY(-0.2em);
+      }
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+/* -------
+  
+  
+  Home, Header and Footer Desktop Styles
+  
+  -------*/
+
+.head {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  position: relative;
+  @include landingStyle();
+}
+
+.header {
+  z-index: 3;
+  display: flex;
+  padding: 0.5em 2em;
+  justify-content: space-between;
+
+  &__logo {
+    width: 5em;
+    padding-top: 1.5em;
+  }
+  &__menu {
+    width: 2.5em;
+    padding-top: 1em;
+  }
+  &__middle {
+    position: absolute;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: $primary-black;
+    top: 0;
+    bottom: 0;
+    z-index: 32;
+    left: 0;
+    right: 0;
+    display: none;
+    animation: moveInRight 1s ease;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+
+      li {
+        animation: 1.5s opacity;
+        margin-bottom: 3em;
+        list-style: none;
+      }
+    }
+
+    a {
+      font-size: 1.5em;
+      text-decoration: none;
+      color: $primary-smokewhite;
+      display: block;
+      margin: auto;
+    }
+  }
+  &__close {
+    width: 2em;
+    position: absolute;
+    right: 2em;
+    top: 2em;
+    animation: spin 2s;
+  }
+}
+
+.landing {
+  &__heading {
+    font-family: $secondary-font;
+    font-weight: 900;
+    padding-top: 1.5em;
+    font-size: 6em;
+    text-align: center;
+    color: $primary-white;
+  }
+  &__paragraph {
+    position: absolute;
+    width: 40%;
+    color: $primary-white;
+    font-family: $secondary-font;
+    font-weight: 100;
+    line-height: 1.8;
+    bottom: 3em;
+    left: 2em;
+  }
+}
+
+.about {
+  margin-top: 8em;
+  &__header {
+    text-align: center;
+    color: $secondary-grey;
+    font-size: 3em;
+    span {
+      border-bottom: $primary-yellow 0.1em solid;
+    }
+  }
+
+  &__con {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  &__child {
+    margin-top: 7em;
+    width: 40%;
+  }
+  &__img {
+    width: 100%;
+  }
+  &__paragraph {
+    margin-top: 2em;
+    width: 70%;
+    line-height: 1.5em;
+    color: $secondary-grey;
+  }
+  &__know-us {
+    color: $primary-black;
+    margin-left: 2em;
+  }
+}
+
+.footer {
+  background-color: $secondary-grey;
+  color: $primary-white;
+  padding: 4em;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10em;
+
+  &__logo {
+    width: 5em;
+    margin-bottom: 1.5em;
+    padding-right: 1em;
+  }
+  &__link {
+    line-height: 2em;
+    li {
+      list-style: none;
+    }
+  }
+  &__icon {
+    width: 1.5em;
+    padding-right: 1em;
+  }
+}
+
+/* -------
+  
+  
+  Home, Header and Footer Mobile Styles
+  
+  -------*/
+
+@media (max-width: 700px) {
+  .landing {
+    padding: 0.5em 1em;
+  }
+  .landing {
+    &__heading {
+      font-size: 2em;
+      margin-top: 3em;
+    }
+
+    &__paragraph {
+      width: 100%;
+      text-align: center;
+      left: 0;
+      bottom: 11em;
+      font-size: 0.8em;
+    }
+  }
+  .about {
+    &__con {
+      flex-direction: column;
+    }
+    &__child {
+      width: 100%;
+    }
+    &__img {
+      width: 80%;
+      display: block;
+      margin: auto;
+    }
+    &__paragraph {
+      width: 100%;
+      text-align: center;
+    }
+    &__know-us {
+      margin: 2em auto;
+    }
+  }
+
+  .footer {
+    flex-direction: column;
+    text-align: center;
+
+    &__link {
+      font-size: 1.1em;
+      padding-top: 1em;
+      line-height: 3em;
+    }
+  }
+}
+@media only screen and (max-width: 990px) and (orientation: landscape) {
+  .landing {
+    &__heading {
+      font-size: 3em;
+      padding-top: 3em;
+    }
+    &__paragraph {
+      display: none;
+    }
+  }
+}
+
+/* -------
+  
+  
+  Login and Register Desktop Styles
+  
+  -------*/
+
+.login,
+.register {
+  background-color: $primary-black;
+  //   background-image: linear-gradient(
+  //     to top,
+  //     rgba($primary-black, 0.2),
+  //     rgba($primary-black, 0.6)
+  //   );
+  height: 100vh;
+
+  &__con {
+    position: relative;
+    margin: 3em 0;
+    width: 100%;
+  }
+  &__header {
+    text-align: center;
+  }
+  &__heading {
+    color: $primary-white;
+    font-size: 2em;
+    margin: 1em 0;
+  }
+
+  &__form {
+    input {
+      border-radius: 2em;
+      display: block;
+      border: none;
+      margin: 2em auto;
+      border: 0.1em solid $secondary-grey;
+      outline: none;
+      animation-duration: 1s;
+
+      &:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      &:nth-child(3) {
+        animation-delay: 0.5s;
+      }
+
+      &:last-child {
+        animation-delay: 0.5s;
+      }
+    }
+  }
+  &__input {
+    height: 4em;
+    background-color: transparent;
+    padding-left: 1em;
+    width: 45%;
+    color: $primary-white;
+    box-shadow: 2px -2px 98px -30px rgba($primary-white, 1);
+    transition: all 0.7s ease;
+
+    &::placeholder {
+      color: rgba($primary-smokewhite, 0.8);
+    }
+
+    &:focus {
+      box-shadow: 2px -2px 98px -15px rgba($primary-white, 1);
+    }
+  }
+  &__submit {
+    height: 4em;
+    width: 15em;
+    padding: 0;
+    color: $primary-black;
+    background-color: $primary-white;
+    font-weight: 700;
+  }
+
+  &__alert {
+    text-align: center;
+    color: $primary-grey;
+
+    a {
+      color: $primary-yellow;
+      text-decoration: none;
+    }
+  }
+  &__label {
+    color: $primary-grey;
+  }
+}
+
+/* -------
+  
+  
+  Login and Register Mobile Styles
+  
+  -------*/
+
+@media (max-width: 700px) {
+  .login,
+  .register {
+    &__con {
+      margin-top: 5em;
+    }
+    &__heading {
+      font-size: 1em;
+    }
+    &__input {
+      width: 80%;
+    }
+
+    &__submit {
+      height: 3em;
+      width: 10em;
+    }
+  }
+}
+
+/* -------
+  
+  
+  Dashboard Styles
+  
+  -------*/
+
+.dashboard {
+  background-color: $secondary-black;
+  height: 100vh;
+
+  &__note {
+    color: $primary-yellow;
+    margin: 2em 1em;
+    font-size: 2em;
+    font-family: $secondary-font;
+    font-weight: 300;
+  }
+  &__currency-note {
+    color: $primary-white;
+    margin: 2em 1em;
+    font-size: 1.3em;
+    font-family: $secondary-font;
+    font-weight: 100;
+  }
+  &__currency-input {
+    width: 40%;
+    background-color: transparent;
+    border: none;
+    padding: 0 0 0.5em 1em;
+    font-size: 1.8em;
+    margin-left: 1em;
+    font-family: $primary-font;
+    font-weight: 100;
+    border-bottom: 0.1em solid $primary-yellow;
+    color: white;
+    outline: none;
+  }
+
+  &__dollar {
+    color: $primary-yellow;
+      font-size: 1.8em;
+      position: absolute;
+      font-family: $primary-font;
+    font-weight: 100;
+      left: 1em;
+  }
+
+  &__currency-result {
+    color: $secondary-grey;
+    font-family: $primary-font;
+    margin: 2em 1em;
+    font-size: 2em;
+    span {
+      color: $primary-yellow;
+    }
+  }
+
+  &__btn {
+    border-radius: 0.2em;
+    font-size: 0.8em;
+    padding: 1em 2em;
+    color: $primary-black;
+    background-color: $primary-white;
+    cursor: pointer;
+    margin: 2em 1em;
+  }
+  &__header-right {
+    margin-top: 2em;
+  }
+}
+
+/* -------
+  
+  
+  Dashbaord Mobile Styles
+  
+  -------*/
+
+  @media (max-width: 700px) {
+      .dashboard {
+          &__note {
+            font-size: 1.3em;
+          }
+          &__currency-input {
+              width: 80%;
+              display: block;
+              margin: 1em auto;
+              font-size: 1.3em;
+          }
+          &__currency-note {
+              font-size: 1em;
+          }
+          &__dollar {
+              font-size: 1.3em;
+          }
+          &__currency-result {
+              font-size: 1.4em;
+          }
+      }
+
+  }
